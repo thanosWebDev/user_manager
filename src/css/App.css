@@ -1,0 +1,119 @@
+/* Toolbar */
+.toolBar {
+  background-color: rgb(242, 242, 242);
+  padding: 20px 20px 4px 20px;
+}
+
+/* addUserForm */
+.addUserForm {
+  background-color: rgba(74, 144, 226, 0.15);
+  padding: 20px 20px 4px 20px;
+}
+.addUserForm .form-check-label {
+  padding-top: 2px;
+}
+
+/* User list */
+.userList>.row {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.table thead th {
+  border-top: none;
+}
+tbody tr:last-child {
+  border-bottom: 1px solid #dee2e6;
+}
+thead th {
+  color: #444;
+  font-weight: 400;
+}
+tbody{
+  color: #666;
+  font-weight: 300;
+  font-size: 14px;
+}
+tbody th {
+  font-weight: 300;
+}
+.table td {
+  padding: 0.75rem 0.75rem 0.7rem 0.75rem;
+}
+
+/* User Item */
+.actions {
+  text-align: right;
+  min-width: 76px;
+}
+.table-hover tbody tr:hover {
+  background-color:rgba(0,0,0, .045) !important;
+}
+.closeBtn, .editBtn{
+  font-size: 13px;
+  background-color:#ddd;
+  color: #777;
+  padding: 4px 7px;
+  border-radius: 4px;
+}
+.closeBtn:hover {
+  color: white;
+  background-color: rgb(214, 63, 63);
+  cursor: pointer;
+}
+.editBtn:hover {
+  color: white;
+  background-color: rgb(55, 150, 156);
+  cursor: pointer;
+}
+
+/* Modal */
+.overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+.modal-form{
+  position: relative;
+  max-width: 550px;
+  top: 40px;
+  margin: 0 auto;
+  border: 1px solid rgb(228, 220, 214);
+  background-color: rgb(248, 247, 246);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 0 80px 0 rgba(0,0,0,.25);
+}
+.editUserForm {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.modalHeader {
+  padding: 15px 20px 0 20px;
+}
+.modalBody {
+  padding: 0px 20px 30px 20px;
+}
+.modalBody .form-check-label {
+  padding-top: 2px;
+}
+.closeBtnModal svg{
+  font-size: 24px;
+  color: #888;
+}
+.closeBtnModal svg:hover{
+  color: #444;
+  padding: 2px 2px;
+  border-radius: 4px;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+  z-index: 0;
+}
+
+

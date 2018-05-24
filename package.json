@@ -1,0 +1,33 @@
+{
+  "name": "user_manager_test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-icons": "^2.2.7",
+    "react-js-pagination": "^3.0.2",
+    "react-modal": "^3.4.4",
+    "react-scripts": "1.1.4",
+    "uuid": "^3.2.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-standard": "^3.1.0"
+  }
+}
