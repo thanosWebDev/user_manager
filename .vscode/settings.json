@@ -1,0 +1,6 @@
+{
+  "editor.tabSize": 2,
+  "jshint.enable" : false,
+  //"eslint.enable": true,
+  //"javascript.validate.enable": true
+}
