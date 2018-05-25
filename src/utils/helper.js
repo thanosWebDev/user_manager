@@ -1,4 +1,4 @@
-import {usersDb2, usersDb} from "./db"
+import {usersDb} from "./db";
 
 // Load demo data
 export const getUsers = () => usersDb

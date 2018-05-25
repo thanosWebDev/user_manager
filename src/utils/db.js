@@ -40,38 +40,3 @@ export const usersDb = [
   {'id': 'f3d1a369-97b5-4a8e-b0b3-ec12aeb8d4c9', 'username': 'lgass12', 'firstname': 'Lynett', 'lastname': 'Gass', 'role': 'user', 'enabled': false},
   {'id': 'f8f892df-24db-4d40-993d-d441656ea046', 'username': 'lpaviour13', 'firstname': 'Lesly', 'lastname': 'Paviour', 'role': 'admin', 'enabled': false}
 ]
-
-export const usersDb2 = [
-  {
-    id: '0001',
-    username: 'starbuck',
-    firstname: 'Kara',
-    lastname: 'Thrace',
-    role: 'admin',
-    enabled: true
-  },
-  {
-    id: '0002',
-    username: 'apollo',
-    firstname: 'Lee',
-    lastname: 'Adama',
-    role: 'user',
-    enabled: true
-  },
-  {
-    id: '0003',
-    username: 'athena',
-    firstname: 'Sharon',
-    lastname: 'Valerii',
-    role: 'admin',
-    enabled: false
-  },
-  {
-    id: '0004',
-    username: 'chief',
-    firstname: 'Galen',
-    lastname: 'Tyrol',
-    role: 'user',
-    enabled: true
-  }
-]

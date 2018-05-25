@@ -19,11 +19,13 @@ class EditUser  extends Component {
     warning: false
   }
 
+  // Populate form
   componentDidMount() {
     const {user} = this.props;
     this.setState(...user);
   }
 
+  // Form control
   handleInputChange = (event) => {
     const name = event.target.name;
     this.setState({[name]: event.target.value});
@@ -32,23 +34,28 @@ class EditUser  extends Component {
     this.setState({enabled: event.target.checked});
   }
 
+  // Update user and simple validation if fields are empty
   updateUser = (e) => {
     const {username, firstname, lastname} = this.state;
     const { warning, ...updatedUser } = this.state;
+    const {editUser, closeModal} = this.props;
     e.preventDefault();
     if (!username || !firstname || !lastname) {
       this.setState({warning: true});
     } else {
-      this.props.editUser(updatedUser);
-      this.props.closeModal();
+      editUser(updatedUser);
+      closeModal();
     }
   }
 
   render() {
+    const {closeModal} = this.props;
+    const {username, firstname, lastname, role, enabled, warning} = this.state;
     return (
       <div className="editUserForm">
+
         <div className="modalHeader">
-          <div className="closeBtnModal text-right"><span onClick={this.props.closeModal}><Close /></span></div>
+          <div className="closeBtnModal text-right"><span onClick={closeModal}><Close /></span></div>
         </div>
 
         <div className="modalBody">
@@ -56,32 +63,68 @@ class EditUser  extends Component {
           <form onSubmit={this.updateUser}>
             <div className="form-group">
               <div className="form-group col-md">
-                <input type="text" className="form-control form-control-sm" id="username" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange}autoComplete="off"></input>
+                <input  type="text"
+                        className="form-control form-control-sm"
+                        id="username"
+                        name="username"
+                        placeholder="Username"
+                        value={username}
+                        onChange={this.handleInputChange}
+                        autoComplete="off">
+                </input>
               </div>
               <div className="form-group col-md">
-                <input type="text" className="form-control form-control-sm" id="firstName" placeholder="First Name" name="firstname" value={this.state.firstname} onChange={this.handleInputChange} autoComplete="off"></input>
+                <input  type="text"
+                        className="form-control form-control-sm"
+                        id="firstName"
+                        placeholder="First Name"
+                        name="firstname"
+                        value={firstname}
+                        onChange={this.handleInputChange}
+                        autoComplete="off">
+                </input>
               </div>
               <div className="form-group col-md">
-                <input type="text" className="form-control form-control-sm" id="lastName" placeholder="Last Name" name="lastname" value={this.state.lastname} onChange={this.handleInputChange} autoComplete="off"></input>
+                <input  type="text"
+                        className="form-control form-control-sm"
+                        id="lastName"
+                        placeholder="Last Name"
+                        name="lastname"
+                        value={lastname}
+                        onChange={this.handleInputChange}
+                        autoComplete="off">
+                </input>
               </div>
               <div className="form-group col-md">
-                <select id="role" className="form-control form-control-sm" value={this.state.role} onChange={this.handleInputChange} name="role">
+                <select id="role"
+                        className="form-control form-control-sm"
+                        value={role}
+                        onChange={this.handleInputChange}
+                        name="role">
                   <option value="" disabled>Role...</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
                 </select>
               </div>
               <div className="form-check mb-4 ml-3 mr-3">
-                <input className="form-check-input" type="checkbox" id="enabled" name="enabled" checked={this.state.enabled} onChange={this.handleInputChangeCheck}/>
+                <input  className="form-check-input"
+                        type="checkbox"
+                        id="enabled"
+                        name="enabled"
+                        checked={enabled}
+                        onChange={this.handleInputChangeCheck}/>
                 <label className="form-check-label text-dark" htmlFor="enabled">
                   Enabled
                 </label>
               </div>
               <div className="form-group col-md">
-              <button type="submit" className="btn btn-success btn-sm btn-block">Save</button>
+              <button type="submit"
+                      className="btn btn-success btn-sm btn-block">
+                Save
+              </button>
               </div>
             </div>
-            { this.state.warning && (
+            { warning && (
               <div className="pl-3 pr-3"><small>All fields are required</small></div>
             )}
           </form>

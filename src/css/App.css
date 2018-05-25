@@ -43,7 +43,6 @@ tbody th {
 /* User Item */
 .actions {
   text-align: right;
-  min-width: 76px;
 }
 .table-hover tbody tr:hover {
   background-color:rgba(0,0,0, .045) !important;

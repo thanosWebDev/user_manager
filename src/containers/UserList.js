@@ -18,13 +18,15 @@ class UserList extends Component {
     itemsPerPage: "10"
   }
 
+  // Change back to page one if a filter is aplied
   componentWillReceiveProps(nextProps) {
-    if (this.props.query !== nextProps.query
-    || this.props.roleFilter !== nextProps.roleFilter) {
+    const {query, roleFilter} = this.props;
+    if (query !== nextProps.query || roleFilter !== nextProps.roleFilter) {
       this.setState({activePage: 1});
     }
   }
 
+  // Filter userlist first by search query and second by user role 
   usersFiltering = () => {
     const {users, query, roleFilter} = this.props;
     let filteredUsers = users;
@@ -35,7 +37,9 @@ class UserList extends Component {
               first = user.firstname.toLowerCase(),
               last = user.lastname.toLowerCase(),
               match = query.toLowerCase();
-        if (username.indexOf(match) !== -1 || first.indexOf(match) !== -1 || last.indexOf(match) !== -1) {
+        if (username.indexOf(match) !== -1 || 
+            first.indexOf(match) !== -1 || 
+            last.indexOf(match) !== -1) {
           return true;
         } else {
           return false
@@ -50,6 +54,7 @@ class UserList extends Component {
     }
   }
 
+  // Filter the users that will be rendered according to pagination
   usersRendering = (usersList) => {
     const {activePage, itemsPerPage} = this.state;
     const start = (activePage * itemsPerPage) - itemsPerPage;
@@ -57,24 +62,29 @@ class UserList extends Component {
     return usersList.slice(start, end);
   }
 
+  // Save active page in state
   handlePageChange = (pageNumber) => {
     this.setState({activePage: pageNumber});
   }
 
+  // Form control and Save items per page in state
+  // Set active page to one, when change occurs
   itemsPerPageChange = (event) => {
-    const name = event.target.name;
-    this.setState({[name]: event.target.value, activePage: 1});
+    this.setState({itemsPerPage: event.target.value, activePage: 1});
   }
 
   render() {
+    const {itemsPerPage, activePage} = this.state;
+    const {deleteUser, openModal} = this.props;
+    // Filter users first
     const usersList = this.usersFiltering();
+    // Slice the users to be rendered according to pagination
     const usersRendered = this.usersRendering(usersList);
-    const indexStart = (this.state.itemsPerPage * this.state.activePage) - this.state.itemsPerPage;
+    // create index num for each user to be displayed
+    const indexStart = (itemsPerPage * activePage) - itemsPerPage;
     return (
       <div className="container userList mt-5">
-
         <div className="row mb-3">
-
           <table className="table table-hover">
             <thead>
               <tr>
@@ -88,24 +98,21 @@ class UserList extends Component {
               </tr>
             </thead>
             <tbody>
-                {usersRendered.map((user, index) => (
-                  <User user={user}
-                        index={(index+1) + indexStart}
-                        key={user.id}
-                        deleteUser={this.props.deleteUser}
-                        openModal={this.props.openModal}
-                  />
-                ))}
+              {usersRendered.map((user, index) => (
+                <User user={user}
+                      index={(index+1) + indexStart}
+                      key={user.id}
+                      deleteUser={deleteUser}
+                      openModal={openModal}
+                />
+              ))}
             </tbody>
           </table>
-
         </div>
-
         <div className="row">
-
           <Pagination
-            activePage={this.state.activePage}
-            itemsCountPerPage={parseInt(this.state.itemsPerPage, 10)}
+            activePage={activePage}
+            itemsCountPerPage={parseInt(itemsPerPage, 10)}
             totalItemsCount={usersList.length}
             onChange={this.handlePageChange}
             linkClass="page-link"
@@ -114,12 +121,11 @@ class UserList extends Component {
             prevPageText="Previous"
             innerClass="pagination pagination-sm"
           />
-
           <div className="ml-auto">
             <select id="itemsPerPage"
                     name="itemsPerPage"
                     className="form-control form-control-sm"
-                    value={this.state.itemsPerPage}
+                    value={itemsPerPage}
                     onChange={this.itemsPerPageChange}
             >
               <option value="5" >5</option>
@@ -127,13 +133,10 @@ class UserList extends Component {
               <option value="20">20</option>
             </select>
           </div>
-
         </div>
-
       </div>
     )
   }
-
 }
 
 export default UserList
